@@ -1,0 +1,3 @@
+[submodule "third_party/ovis"]
+	path = third_party/ovis
+	url = https://github.com/Ea3124/Ovis_lora.git
