@@ -1,0 +1,8 @@
+name: ovis
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - jq
+  - tree
+prefix: /home/undergrad/.conda/envs/ovis

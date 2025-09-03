@@ -33,8 +33,8 @@ def load_model(merged_dir: str):
     return tok, model
 
 def read_meta_all(data_dir: Path) -> List[Dict[str, Any]]:
-    """new_test.json -> test.json -> (fallback) train.json + val.json"""
-    fp = data_dir / "new_test.json"
+    """test_reindexed.json -> test.json -> (fallback) train.json + val.json"""
+    fp = data_dir / "test_reindexed.json"
     if fp.exists():
         return json.loads(fp.read_text())
     fp = data_dir / "test.json"
