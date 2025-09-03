@@ -2,3 +2,9 @@
 /run_ovis2_5_lora_mt_2_merged/*
 
 run_ovis2_5_lora_mt_2_merged.zip
+
+/test_data/images/
+/test_data/images/*
+/test_data/datainfo.json
+/test_data/test.json
+/test_data/test_reindexed.json

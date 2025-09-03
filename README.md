@@ -101,6 +101,20 @@ cd $ROOT/deep-chal-ovis/test_data
 python re_index.py
 ```
 
+4. **datainfo.json 경로 수정**
+   파일: `$ROOT/test_data/datainfo.json`
+
+```json
+{
+  "my_dataset_test": {
+    "meta_file": "$ROOT/test_data/test_reindexed.json",
+    "storage_type": "hybrid",
+    "data_format": "conversation",
+    "image_dir": "/home/undergrad/deep-chal-ovis/test_data/images"
+  }
+}
+```
+
 4. **추론 실행 → submission.csv 생성**
 
 ```bash
@@ -109,7 +123,7 @@ export CUDA_VISIBLE_DEVICES=4,5,6,7   # 필요 시 변경
 
 python infer_submit.py \
   --data-dir "$ROOT/test_data" \
-  --merged-dir "$ROOT/third_party/ovis/ovis/checkpoints/run_ovis2_5_lora_mt_2_merged" \
+  --merged-dir "$ROOT/third_party/ovis/checkpoints/run_ovis2_5_lora_mt_2_merged" \
   --out submission.csv \
   --open-max-side 1536 \
   --min_pixels $((448*448)) \
