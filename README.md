@@ -60,6 +60,8 @@ cd $ROOT/third_party/ovis
 CUDA_VISIBLE_DEVICES=4,5,6,7 bash scripts/run_ovis2_5_lora_mt_2.sh
 ```
 
+## Merged lora in base 추가 예정
+
 # 추론(Inference)
 
 1. **체크포인트 다운로드**
