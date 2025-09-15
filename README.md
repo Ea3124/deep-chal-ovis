@@ -70,9 +70,11 @@ python extract_lora_from_shards.py
 
 ## 추론(Inference)
 
-1. **체크포인트 다운로드(huggingface load 실패시에만 시도)**
+1. ** test data 및 체크포인트 다운로드(체크포인트는 huggingface load 실패시에만 시도)**
 
-   ([huggingface 다운로드 링크](https://huggingface.co/ea3124/azu2025) → 아래처럼 모델 디렉터리 생성 후 배치)
+  ([huggingface 다운로드 링크](https://huggingface.co/ea3124/azu2025) → (ckpt는)아래처럼 모델 디렉터리 생성 후 배치)
+  
+  test data는 루트에서 test_data폴더안에 파일 넣기
 
 2. **체크포인트 배치 경로 예시**
 
