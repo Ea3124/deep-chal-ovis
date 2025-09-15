@@ -97,7 +97,7 @@ $ROOT/third_party/ovis/ovis/checkpoints/
     └── vocab.json
 ```
 
-3. **테스트용 JSON 생성**
+3. **테스트용 JSON 생성(test_data 오류 발생시)**
 
 ```bash
 cd $ROOT
