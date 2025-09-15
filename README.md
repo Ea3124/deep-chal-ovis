@@ -1,4 +1,6 @@
-# 데이터 준비 & 환경설정
+2025 아주소중한 딥러닝 챌린지 모델
+
+## 데이터 준비 & 환경설정
 
 **Kaggle**에서 데이터 내려받아 압축 풀기
 
@@ -17,7 +19,7 @@ kaggle competitions download -c deeplearningchallenge
 unzip deeplearningchallenge.zip
 ```
 
-# 학습(Training)
+## 학습(Training)
 
 1. **학습용 JSON 생성**
 
@@ -60,9 +62,13 @@ cd $ROOT/third_party/ovis
 CUDA_VISIBLE_DEVICES=4,5,6,7 bash scripts/run_ovis2_5_lora_mt_2.sh
 ```
 
-## Merged lora in base 추가 예정
+### Merged lora in base
 
-# 추론(Inference)
+```
+python extract_lora_from_shards.py
+```
+
+## 추론(Inference)
 
 1. **체크포인트 다운로드(huggingface load 실패시에만 시도)**
 
