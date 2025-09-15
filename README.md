@@ -1,4 +1,4 @@
-2025 아주소중한 딥러닝 챌린지 모델
+2025 아주소중한 딥러닝 챌린지 모델 (시연시 [추론](https://github.com/Ea3124/deep-chal-ovis?tab=readme-ov-file#%EC%B6%94%EB%A1%A0inference) 부분 참조)
 
 ## 데이터 준비 & 환경설정
 
