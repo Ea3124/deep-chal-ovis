@@ -11,4 +11,10 @@ run_ovis2_5_lora_mt_2_merged.zip
 
 
 submission.csv
+submission_main.csv
+submission_max.csv
+submission_tem.csv
 infer_result.txt
+infer_result_main.txt
+infer_result_max.txt
+infer_result_tem.txt

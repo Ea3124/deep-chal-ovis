@@ -64,8 +64,9 @@ CUDA_VISIBLE_DEVICES=4,5,6,7 bash scripts/run_ovis2_5_lora_mt_2.sh
 
 # 추론(Inference)
 
-1. **체크포인트 다운로드**
-   ([다운로드 링크](https://drive.google.com/drive/folders/1i0DchQsWkRIHVE-XmbYWI5sOG34MgYub?usp=sharing) → 아래처럼 모델 디렉터리 생성 후 배치)
+1. **체크포인트 다운로드(huggingface load 실패시에만 시도)**
+
+   ([huggingface 다운로드 링크](https://huggingface.co/ea3124/azu2025) → 아래처럼 모델 디렉터리 생성 후 배치)
 
 2. **체크포인트 배치 경로 예시**
 
@@ -121,9 +122,20 @@ python re_index.py
 cd $ROOT
 export CUDA_VISIBLE_DEVICES=4,5,6,7   # 필요 시 변경
 
+# huggingface 모델 사용 될시
+python infer_submit.py \
+  --data-dir /home/undergrad/deep-chal-ovis/test_data \
+  --model-id ea3124/azu2025 \
+  --out submission.csv \
+  --open-max-side 1536 \
+  --min_pixels $((448*448)) \
+  --max_pixels $((1344*1792))
+
+
+# huggingface 모델 사용이 안되어 수동 다운로드 받았을 시
 python infer_submit.py \
   --data-dir "$ROOT/test_data" \
-  --merged-dir "$ROOT/third_party/ovis/checkpoints/run_ovis2_5_lora_mt_2_merged" \
+  --merged-dir /home/undergrad/ovis/Ovis/checkpoints/run_ovis2_5_lora_mt_2_merged \
   --out submission.csv \
   --open-max-side 1536 \
   --min_pixels $((448*448)) \

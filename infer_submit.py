@@ -12,10 +12,10 @@ from ovis.model.modeling_ovis import Ovis
 Image.MAX_IMAGE_PIXELS = None           # 초대형 이미지 경고 해제(필요시 수치로 제한 가능)
 ImageFile.LOAD_TRUNCATED_IMAGES = True  # 일부 손상 이미지도 최대한 로드
 
-def load_model(merged_dir: str):
-    tok = AutoTokenizer.from_pretrained(merged_dir, use_fast=False, trust_remote_code=True)
+def load_model(model_id_or_path: str):
+    tok = AutoTokenizer.from_pretrained(model_id_or_path, use_fast=False, trust_remote_code=True)
     model = Ovis.from_pretrained(
-        merged_dir,
+        model_id_or_path,
         torch_dtype=torch.bfloat16,
         device_map="auto",
         trust_remote_code=True,
@@ -152,7 +152,8 @@ def open_images(
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--data-dir", required=True, help="prepare_ovis_dataset_{test,new}.py 출력 디렉토리")
-    ap.add_argument("--merged-dir", required=True, help="병합된(merge) 모델 디렉토리")
+    ap.add_argument("--model-id", default="ea3124/azu2025", help="Hugging Face repo id 또는 로컬 경로 (기본: ea3124/azu2025)")
+    ap.add_argument("--merged-dir", default=None, help="[Deprecated] 예전 로컬 병합 모델 경로. 지정 시 model-id를 무시")
     ap.add_argument("--out", default="submission.csv", help="제출 파일 경로")
     ap.add_argument("--max-new-tokens", type=int, default=512)
     ap.add_argument("--temperature", type=float, default=0.8)
@@ -171,7 +172,10 @@ def main():
     total = len(metas)
     print(f"[INFO] preprocessed test samples: {total}")
 
-    tok, model = load_model(args.merged_dir)
+    model_id_or_path = args.model_id
+    if args.merged_dir:  # 하위호환
+        model_id_or_path = args.merged_dir
+    tok, model = load_model(model_id_or_path)
 
     rows = []
     for idx, item in enumerate(metas):
